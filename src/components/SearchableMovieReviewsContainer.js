@@ -19,6 +19,11 @@ class SearchableMovieReviewsContainer extends Component {
             .then(data => this.setState({reviews: data.results}))
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.fetchSearch()
+    }
+
     componentDidMount() {
         this.fetchSearch()
     }
@@ -26,7 +31,7 @@ class SearchableMovieReviewsContainer extends Component {
     render() {
         return (
             <div className="searchable-movie-reviews">
-                <form onSubmit={this.fetchSearch}>
+                <form onSubmit={this.handleSubmit}>
                     <input name="searchTerm" value={this.state.searchTerm} onChange={(e) => this.setState({searchTerm: e.target.value})}/>
                     <input type="submit" value="Submit"/>
                 </form>
